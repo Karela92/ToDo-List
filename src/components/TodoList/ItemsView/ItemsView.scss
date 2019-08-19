@@ -1,0 +1,63 @@
+.todoListView {
+  .itemForm {
+    background-color: #ebf3f3;
+    padding: 10px 20px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #009797;
+    box-shadow: 4px 2px 7px #80808057;
+    &__row {
+      display: flex;
+      justify-content: space-between;
+      & input {
+        width: 100%;
+        margin-top: 5px;
+      }
+      p {
+        margin: 0;
+      }
+      .textareaBlock, .selectedBlock {
+        margin-top: 5px;
+      }
+      .formTitle, .formPriority, .formDeadline, .formDoneTime {
+        width: 13%;
+      }
+      .formDescription {
+        width: 25%;
+      }
+      .formCreatedTime, .formDoneTime {
+        div {
+          margin-top: 13px;
+        }
+      }
+      .formCreatedTime {
+        margin-left: 20px;
+      }
+      .formDoneTime {
+        text-align: center;
+      }
+      .primary {
+        margin-top: 13px;
+      }
+    }
+  }
+  .formDoneButton, .formRemoveButton {
+    align-self: flex-end;
+  }
+  input {
+    border-radius: 3px;
+    border: 1px solid grey;
+    padding: 13px;
+    outline: none;
+  }
+  .textareaBlock {
+    margin-top: 20px;
+    padding: 10px 15px;
+  }
+  .emptyItemRow {
+    text-align: center;
+    padding: 20px;
+    background-color: #ebf3f3;
+    color: red;
+  }
+}

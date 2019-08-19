@@ -1,0 +1,37 @@
+.selectedBlock {
+  border-radius: 3px;
+  position: relative;
+  margin-top: 20px;
+  color: black;
+  &__options {
+    border-radius: 4px;
+    display: none;
+    margin-top: 10px;
+    z-index: 5;
+    .option {
+      padding: 10px 15px;
+      background-color: white;
+      &:first-child {
+        margin-top: 0;
+      }
+      &:hover {
+        background-color: grey;
+      }
+    }
+  }
+  &__label  {
+    border-radius: 4px;
+    border: 1px solid grey;
+    padding: 10px 15px;
+    background-color: white;
+  }
+}
+
+.optionsIsVisible {
+  border: 1px solid grey;
+  display: block;
+  position: absolute;
+  width: 100%;
+}
+
+
