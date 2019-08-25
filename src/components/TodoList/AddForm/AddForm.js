@@ -137,7 +137,7 @@ export default class AddForm extends Component {
       title,
       description,
       priority,
-      deadline: deadline ? moment(deadline).format('DD.MM.YYYY'c) : null,
+      deadline: deadline ? moment(deadline).format('DD.MM.YYYY') : null,
       createdTaskTime: new Date()
     };
 
