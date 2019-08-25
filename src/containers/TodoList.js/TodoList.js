@@ -9,45 +9,42 @@ import TabsPriority from '../../components/TodoList/TabsPriority/TabsPriority';
 import './ToDoList.scss';
 
 class TodoList extends Component {
-
   render() {
     const {
-      updateItemsList, todoList, selectedPriority, changePriority, filteredTodoList
+      updateItemsList, todoList, selectedPriority, changePriority, filteredTodoList,
     } = this.props;
-    return(
-      <div className='todoList'>
+    return (
+      <div className="todoList">
         <h1>ToDo List</h1>
         <TabsPriority
-          selectedPriority={ selectedPriority }
-          changePriority={ changePriority }
-          todoList={ todoList }
+          selectedPriority={selectedPriority}
+          changePriority={changePriority}
+          todoList={todoList}
         />
         <ItemsView
-          updateItemsList={ updateItemsList }
-          todoList={ todoList }
-          filteredTodoList={ filteredTodoList }
-          selectedPriority={ selectedPriority }
+          updateItemsList={updateItemsList}
+          todoList={todoList}
+          filteredTodoList={filteredTodoList}
+          selectedPriority={selectedPriority}
         />
         <AddForm
-          todoList={ todoList }
-          updateItemsList={ updateItemsList }
+          todoList={todoList}
+          updateItemsList={updateItemsList}
         />
       </div>
-    )
+    );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    todoList: state.todoList.todoList,
-    selectedPriority: state.todoList.selectedPriority,
-    filteredTodoList: state.todoList.filteredTodoList
-  }
-};
+const mapStateToProps = (state) => ({
+  todoList: state.todoList.todoList,
+  selectedPriority: state.todoList.selectedPriority,
+  filteredTodoList: state.todoList.filteredTodoList,
+});
 
 const mapDispatchToProps = {
   updateItemsList,
-  changePriority
+  changePriority,
 };
 
 

@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import moment from 'moment';
-import PropTypes from 'prop-types';
-import DatePicker from "react-datepicker";
+import DatePicker from 'react-datepicker';
 import { PRIORITIES } from '../../../siteConstants/Priorities';
-
 
 import Input from '../../ui/Input/Input';
 import Button from '../../ui/Button/Button';
@@ -14,10 +12,6 @@ import Select from '../../ui/Select/Select';
 import './ItemsView.scss';
 
 export default class ItemsView extends Component {
-
-  static propTypes = {
-
-  };
 
   handleFieldChange = (fieldName, value, index) => {
     const { todoList, updateItemsList } = this.props;
@@ -49,15 +43,17 @@ export default class ItemsView extends Component {
   }
 
   renderDeadline(deadline, index) {
+    const updateDate = deadline === null ? null : moment(deadline, 'DD.MM.YYYY').toDate();
     return(
       <div className='formDeadline'>
         <p>Deadline</p>
         <DatePicker
-          dateFormat="dd.MM.yyyy"
-          selected={ deadline }
+          selected={ updateDate }
           disable={true}
-          onChange={ (value) => this.handleFieldChange('deadline', value, index) }
+          dateFormat='dd/MM/yyyy'
+          onChange={ (value) => this.handleFieldChange('deadline', moment(value).format('DD.MM.YYYY'), index) }
           minDate={new Date()}
+          placeholderText="Click to select a date"
         />
       </div>
     )
@@ -122,7 +118,7 @@ export default class ItemsView extends Component {
   }
 
   renderCreatedTaskTime(createdTaskTime) {
-    if (!createdTaskTime) {
+    if(!createdTaskTime) {
       return null;
     }
     return(
@@ -146,7 +142,7 @@ export default class ItemsView extends Component {
             todoList.map((todoItem, index) => {
               if (selectedPriority === 'All' || todoItem.priority === selectedPriority) {
                 return (
-                  <div key={ index } className='itemForm'>
+                  <div key={ index } className={`itemForm ${ todoItem.doneTime ? 'itsDone' : ''}`} >
                     <div className='itemForm__row'>
                       { this.renderFormTitle(todoItem.title, index) }
                       { this.renderPriority(todoItem.priority, index) }

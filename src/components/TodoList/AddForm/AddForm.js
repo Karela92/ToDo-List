@@ -11,6 +11,7 @@ import Select from '../../ui/Select/Select';
 
 import './AddForm.scss';
 import 'react-datepicker/dist/react-datepicker.css';
+import moment from 'moment';
 
 const DEFAULT_STATE = {
   title: '',
@@ -58,11 +59,13 @@ export default class AddForm extends Component {
       <div className='formDeadline'>
         <p>Deadline</p>
         <DatePicker
-          dateFormat="dd.MM.yyyy"
+          dateFormat='dd.MM.yyyy'
           selected={ this.state.deadline }
           disable={true}
+          strictParsing
           onChange={ (value) => this.handleFieldChange('deadline', value) }
           minDate={new Date()}
+          placeholderText="Click to select a date"
         />
       </div>
     )
@@ -129,11 +132,12 @@ export default class AddForm extends Component {
       }));
       return;
     }
+
     const params = {
       title,
       description,
       priority,
-      deadline,
+      deadline: deadline ? moment(deadline).format('DD.MM.YYYY'c) : null,
       createdTaskTime: new Date()
     };
 
