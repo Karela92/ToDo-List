@@ -9,6 +9,13 @@ export default class Select extends Component {
     optionsIsVisible: false
   };
 
+  // componentDidMount() {
+  //   document.addEventListener('keydown', handleKeyPress);
+  // }
+  // componentWillUnmount() {
+  //   document.removeEventListener('keydown', handleKeyPress);
+  // }
+
   static defaultProps = {
     label: 'Выберите пункт',
     itemIndex: 0

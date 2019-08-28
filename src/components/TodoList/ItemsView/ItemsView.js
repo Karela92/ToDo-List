@@ -140,8 +140,7 @@ export default class ItemsView extends Component {
         {
           isSelectedPriorityItemExist || selectedPriority === 'All'?
             todoList.map((todoItem, index) => {
-              if (selectedPriority === 'All' || todoItem.priority === selectedPriority) {
-                return (
+                return (selectedPriority === 'All' || todoItem.priority === selectedPriority) &&
                   <div key={ index } className={`itemForm ${ todoItem.doneTime ? 'itsDone' : ''}`} >
                     <div className='itemForm__row'>
                       { this.renderFormTitle(todoItem.title, index) }
@@ -153,8 +152,6 @@ export default class ItemsView extends Component {
                       { this.renderRemoveItem(index) }
                     </div>
                   </div>
-                )
-              }
             }) :
             <div className='emptyItemRow'>Tasks with {selectedPriority} priority not exist</div>
         }
