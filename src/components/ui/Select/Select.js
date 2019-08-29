@@ -9,13 +9,6 @@ export default class Select extends Component {
     optionsIsVisible: false
   };
 
-  // componentDidMount() {
-  //   document.addEventListener('keydown', handleKeyPress);
-  // }
-  // componentWillUnmount() {
-  //   document.removeEventListener('keydown', handleKeyPress);
-  // }
-
   static defaultProps = {
     label: 'Выберите пункт',
     itemIndex: 0
@@ -32,28 +25,29 @@ export default class Select extends Component {
   };
 
   handleSelectOption(option) {
-    this.setState(() => ({ optionsIsVisible: false }), this.props.handleChange('priority', option, this.props.itemIndex))
+    this.setState(() => ({ optionsIsVisible: false }), this.props.handleChange('priority', option, this.props.itemIndex));
   };
 
-  hideContent = () => {
-    this.setState(() => ({ optionsIsVisible: false }))
+  blurHandler = () => {
+    this.setState(() => ({ optionsIsVisible: false }));
   };
 
   render() {
     const { optionsIsVisible } = this.state;
     const { options, label } = this.props;
     return (
-      <div className='selectedBlock'>
+      <div
+        className='selectedBlock'
+         onBlur={this.blurHandler}
+         tabIndex={0}
+      >
         <div
           className='selectedBlock__label'
           onClick={ this.changeOptionsVisibility  }
         >
           { label }
         </div>
-        <div
-          className={ `selectedBlock__options ${ optionsIsVisible ? 'optionsIsVisible' : '' }` }
-          onMouseLeave={ this.hideContent }
-        >
+        <div className={ `selectedBlock__options ${ optionsIsVisible ? 'optionsIsVisible' : '' }` }>
           { options.map((option, index) => {
             return(
               <div
